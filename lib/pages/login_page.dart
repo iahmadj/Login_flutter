@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_myapp/utils/routes.dart';
+import 'package:getwidget/getwidget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -7,22 +8,38 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: Color.fromARGB(255, 255, 255, 255),
+        
         child: Center(
             child: SingleChildScrollView(
           child: Column(children: [
+            Column(
+              children: [
+                Image.asset(
+                  "assets/images/login_image.png",
+                  fit: BoxFit.cover,
+                  scale: 5.5,
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text("Thali Ghar",
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green)),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Text("Deliver Favourite Food",
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              ],
+            ),
             SizedBox(
-              height: 40.0,
+              height: 120.0,
             ),
-            Image.asset(
-              "assets/images/login_image.png",
-              fit: BoxFit.cover,
-              scale: 2.7,
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Text("Welcome to Login",
+            Text("Login to your Account",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             SizedBox(
               height: 10.0,
@@ -45,13 +62,43 @@ class LoginPage extends StatelessWidget {
                   SizedBox(
                     height: 35.0,
                   ),
-                  ElevatedButton(
-                      child: Text("Login"),
-                      style: TextButton.styleFrom(
-                          shadowColor: Colors.black, minimumSize: Size(30, 60)),
-                      onPressed: () {
-                        Navigator.pushNamed(context, MyRoutes.homeRoute);
-                      })
+                  GFButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    },
+                    text: "Login",
+                    color: Colors.green,
+                    size: GFSize.LARGE,
+                    fullWidthButton: true,
+                  ),
+                  SizedBox(
+                    height: 25.0,
+                  ),
+                  Text("Or Continue With",
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GFIconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.facebook),
+                        shape: GFIconButtonShape.pills,
+                      ),
+                      SizedBox(
+                        width: 10.0,
+                      ),
+                      GFIconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.whatsapp),
+                        color: Color.fromRGBO(52, 183, 0, 1),
+                        shape: GFIconButtonShape.pills,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             )
